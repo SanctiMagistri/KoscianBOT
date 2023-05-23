@@ -22,6 +22,20 @@ def run_bot():
             if user_message == "hello there":
                 picture = discord.File("general_kenobi.jpg")
                 await message.channel.send(file=picture)
+            elif user_message == "help":
+                embed = discord.Embed(title="Kościan 0.2", color=discord.Color.dark_red(),description="Bot do rzucania kośćmi podczas sesji RPG!")
+                embed.set_author(name="Sancti Magistri")
+                embed.add_field(
+                    name="Prefixy opcjonalne:",
+                    value="`?` - Bot wysyła odpowiedź w wiadomości prywatnej.")
+                embed.add_field(name="Komendy:",
+                                value="`help` - Strona pomocy\n"
+                                      "`hello there` - ( ͡° ͜ʖ ͡°)\n"
+                                      "`r` `XkY[+Z]` lub `XdY[+Z]` (X - liczba kości, Y - typ kości, Z - opcjonalny bonus lub dodatkowy rzut) - Rzut kością dla systemu DnD\n"
+                                      "`r` `Xt` (X - liczba kości) - Rzut kością k6 dla systemu TFTL\n",
+                                inline=False)
+                embed.set_footer(text="Wszelkie problemy i zażalenia proszę składać do /dev/null")
+                await message.channel.send(embed=embed)
             else:
                 response = responses.handle_response(user_message)
                 await message.author.send(response) if is_private else await message.channel.send(response)

@@ -5,10 +5,6 @@ def handle_response(message) -> str:
     p_message = message.lower()
     print(p_message)
 
-    # if p_message == "hello there":
-    #     picture = discord.File("general_kenobi.jpg")
-    #     return message.channel.send(file=picture)
-
 
     if p_message[:1] == "r":
         throw = scripts.check_command(p_message[2:])
