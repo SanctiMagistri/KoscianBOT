@@ -17,8 +17,8 @@ def TFTL_throw(dice_number):
 
     throw_string = throw_string[:-3]
     if result.count(6) == 0:
-        emote = " :clueless:"
-    else: emote = " :EZ:"
+        emote = " <:clueless:1109878324253179914>"
+    else: emote = " <:Prayge:1109877279334596721>"
 
     return "Wynik: " + throw_string + " \nSukcesów: **" + str(result.count(6)) + "**" + emote
 
