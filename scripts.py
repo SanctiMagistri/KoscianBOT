@@ -1,6 +1,9 @@
 import re
 import random
 
+import discord
+
+
 def throw_dice(list, throws, dice_size):
     for i in range(throws):
         list.append(random.randint(1,dice_size))
@@ -25,7 +28,7 @@ def standard_throw(command):
         return "Błąd w równaniu rzutu!"
     else:
         sum = 0
-        emote = " :um:"
+        emote = " <:um:1109877400927469628>"
         throw_string = ''     # string fo throw results
         result = []      # result values list
         split_throws = re.split("[+]", command)    # separated throws: 3k6 2k4
@@ -40,9 +43,9 @@ def standard_throw(command):
                     res = throw_dice([], 1, int(throw[1]))
                     if throw[1] == "20":
                         if res[0] == 1:
-                            emote = "\nKrytyczna porażka!!! :clueless:"
+                            emote = "\nKrytyczna porażka!!! <:clueless:1109878324253179914>"
                         elif res[0] == 20:
-                            emote = "\nKrytyczny sukces!!! :EZ:"
+                            emote = "\nKrytyczny sukces!!! <:NOWAY:1109877122169835642>"
                     result.append(res)
             else:       # if separated part is added value
                 temp = []
@@ -53,6 +56,8 @@ def standard_throw(command):
             for j in i:
                 throw_string += str(j) + ' + '
                 sum += j
+
+
 
         throw_string = throw_string[:-3]        # delete ' + ' signs from last position
         return "Wynik: " + throw_string + "\nRazem: " + str(sum) + emote

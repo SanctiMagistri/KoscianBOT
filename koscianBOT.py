@@ -1,6 +1,7 @@
 import os
 
 import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 
 import responses
@@ -17,13 +18,14 @@ def run_bot():
     async def on_ready():
         print(f'{client.user} Podłączono')
 
+
     async def send_message(message, user_message, is_private):
         try:
             if user_message == "hello there":
                 picture = discord.File("general_kenobi.jpg")
                 await message.channel.send(file=picture)
             elif user_message == "help":
-                embed = discord.Embed(title="Kościan v0.3", color=discord.Color.dark_red(),description="Bot do rzucania kośćmi podczas sesji RPG!")
+                embed = discord.Embed(title="Kościan v0.3.2", color=discord.Color.dark_red(),description="Bot do rzucania kośćmi podczas sesji RPG!")
                 embed.set_author(name="Sancti Magistri")
                 embed.add_field(
                     name="Prefixy opcjonalne:",
@@ -40,7 +42,7 @@ def run_bot():
             else:
                 response = responses.handle_response(user_message)
                 if response != '':
-                    await message.author.send(response) if is_private else await message.channel.send(response)
+                    await message.author.send(response) if is_private else await message.channel.send(f"<@{message.author.id}> " + response)
                 else:
                     pass
         except Exception as e:
