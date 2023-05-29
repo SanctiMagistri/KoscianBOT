@@ -1,7 +1,6 @@
 import re
 import random
 
-import discord
 
 
 def throw_dice(list, throws, dice_size):
@@ -23,7 +22,7 @@ def TFTL_throw(dice_number):
     return "Wynik: " + throw_string + " \nSukcesów: **" + str(result.count(6)) + "**" + emote
 
 def standard_throw(command):
-    print(command)
+    # print(command)
     if re.findall("[^kKdD0-9+]", command):  # find incorrect command
         return "Błąd w równaniu rzutu!"
     else:
